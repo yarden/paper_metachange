@@ -1,0 +1,1115 @@
+\documentclass[11pt,twoside,bibtotoc,a4paper]{scrartcl}
+\usepackage[dvipsnames,svgnames]{xcolor}
+\usepackage{ifpdf}
+\usepackage{scrpage2}
+\usepackage{footmisc}
+\ifpdf
+  \usepackage[pdfpagemode={UseOutlines},
+              pdftitle={Model identifier: "Nutrient\-\_transition\-\_counter"},
+              pdfauthor={Produced by SBML2LaTeX for JSBML version 1.0beta},
+              pdfsubject={SBML model summary},
+              pdfkeywords={},
+              pdfview={FitBH},
+              plainpages={false},
+              pdftex,
+              colorlinks=true,
+              pdfdisplaydoctitle=true,
+              linkcolor=royalblue,
+              bookmarks,
+              bookmarksopen,
+              bookmarksnumbered,
+              pdfhighlight={/P},
+              urlcolor={blue}]{hyperref}
+  \usepackage{pdflscape}
+  \pdfcompresslevel=9
+  \usepackage[pdftex]{graphicx}
+\else
+  \usepackage[plainpages={false}]{hyperref}
+  \usepackage{lscape}
+  \usepackage{graphicx}
+  \usepackage{breakurl}
+\fi
+\usepackage{calc}
+\usepackage[paper=a4paper,landscape=false,centering]{geometry}
+\usepackage{mathptmx}
+\usepackage[scaled=.95]{helvet}
+\usepackage[english]{babel}
+\usepackage[english]{rccol}
+\usepackage[version=3]{mhchem}
+\usepackage{relsize}
+\usepackage{pifont}
+\usepackage{textcomp}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage{wasysym}
+\usepackage{eurosym}
+\usepackage{rotating}
+\usepackage{upgreek}
+\usepackage{flexisym}
+\usepackage{breqn}
+\usepackage{natbib}
+
+\selectlanguage{english}
+
+\definecolor{royalblue}{cmyk}{.93, .79, 0, 0}
+\definecolor{lightgray}{gray}{0.95}
+\addtokomafont{sectioning}{\color{royalblue}}
+\pagestyle{scrheadings}
+\newcommand{\yes}{\parbox[c]{1.3em}{\Large\Square\hspace{-.65em}\ding{51}}}
+\newcommand{\no}{\parbox[c]{1.3em}{\Large\Square\hspace{-.62em}--}}
+\newcommand{\numero}{N\hspace{-0.075em}\raisebox{0.25em}{\relsize{-2}\b{o}}}
+\newcommand{\reaction}[1]{\begin{equation}\ce{#1}\end{equation}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcommand{\SBMLLaTeX}{{\sffamily\upshape\raisebox{-.35ex}{S\hspace{-.425ex}BML}\hspace{-0.5ex}\begin{rotate}{-17.5}\raisebox{-.1ex}{2}\end{rotate}\hspace{1ex}\LaTeX}}
+\cfoot{\textcolor{gray}{Produced by \SBMLLaTeX}}
+
+\subject{SBML Model Report}
+\title{Model identifier: ``Nutrient\-\_transition\-\_counter"}
+\date{\today}
+\author{\includegraphics[height=3.5ex]{/Users/yarden/my_projects/microbrain/sbml_models/SBML2LaTeX.pdf}}
+
+\begin{document}
+\maketitle
+\thispagestyle{scrheadings}
+
+
+\section{General Overview}
+This is a document in SBML Level 2 Version 4 format. Table~\ref{tab:components} gives an overview of the quantities of all components of this model.
+\begin{table}[h!]
+\centering
+\caption{The SBML components in this model.}\label{tab:components}
+All components are described in more detail in the following sections.
+\begin{tabular}{l|r||l|r}
+\toprule
+\multicolumn{1}{c}{Element}&\multicolumn{1}{|c||}{Quantity}&\multicolumn{1}{c|}{Element}&\multicolumn{1}{c}{Quantity}\\
+
+\midrule
+compartment types&0&compartments&1\\
+species types&0&species&14\\
+events&0&constraints&0\\
+reactions&12&function definitions&0\\
+global parameters&0&unit definitions&5\\
+rules&0&initial assignments&0\\
+\bottomrule\end{tabular}\\
+\end{table}\\
+
+\section{Unit Definitions}
+This is an overview of five unit definitions.
+
+\subsection{Unit \texttt{substance}}
+\begin{description}
+\item[Name] substance
+\item[Definition] $\mathrm{mol}$
+\end{description}
+
+\subsection{Unit \texttt{volume}}
+\begin{description}
+\item[Name] volume
+\item[Definition] $\mathrm{l}$
+\end{description}
+
+\subsection{Unit \texttt{area}}
+\begin{description}
+\item[Name] area
+\item[Definition] $\mathrm{m}^{2}$
+\end{description}
+
+\subsection{Unit \texttt{length}}
+\begin{description}
+\item[Name] length
+\item[Definition] $\mathrm{m}$
+\end{description}
+
+\subsection{Unit \texttt{time}}
+\begin{description}
+\item[Name] time
+\item[Definition] $\mathrm{s}$
+\end{description}
+
+\section{Compartment}
+This model contains one compartment.
+\begin{longtable}[h!]{@{}lllC{2cm}llcl@{}}
+\caption{Properties of all compartments.}\\
+\toprule
+Id&Name&SBO&Spatial Dimensions&Size&Unit&Constant&Outside\\
+\midrule
+\endfirsthead
+\toprule
+Id&Name&SBO&Spatial Dimensions&Size&Unit&Constant&Outside\\
+\midrule
+\endhead
+\texttt{default}&&&3&1&litre&\yes&\texttt{}\\
+\bottomrule\end{longtable}
+
+
+\subsection{Compartment \texttt{default}}
+This is a three-dimensional compartment with a constant size of one\,litre.
+
+\begin{landscape}
+
+\section{Species}
+This model contains 14 species.
+Section~\ref{sec:DerivedRateEquations} provides further details and the derived rates of change of each species.
+\begin{longtable}[h!]{@{}p{3.5cm}p{6.5cm}p{5cm}p{3cm}C{1.5cm}C{1.5cm}@{}}
+\caption{Properties of each species.}\\
+\toprule
+Id&Name&Compartment&Derived Unit&Constant&Boundary Condition\\
+\midrule
+\endfirsthead
+\toprule
+Id&Name&Compartment&Derived Unit&Constant&Boundary Condition\\
+\midrule
+\endhead
+\texttt{Gal}&Gal&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Glu}&Glu&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Gal\-\_Sensor}&Gal Sensor&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Glu}&Degraded\-\_Glu&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Gal}&Degraded\-\_Gal&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Glu\-\_Sensor}&Glu Sensor&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Gal\-\_Activator}&Gal Activator&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Glu\-\_to\-\_Gal}&Glu-to-Gal&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Glu\-\_Activator}&Glu Activator&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Gal\-\_to\-\_Glu}&Gal-to-Glu&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Glu\-\_Sensor}&Degraded\-\_Glu\-\_Sensor&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Gal\-\_Sensor}&Degraded\-\_Gal\-\_Sensor&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Glu\-\_To\-\_Gal}&Degraded\-\_Glu\-\_To\-\_Gal&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\texttt{Degraded\-\_Gal\-\_To\-\_Glu}&Degraded\-\_Gal\-\_To\-\_Glu&\texttt{default}&$\mathrm{invalid}$&\no&\no\\
+\bottomrule\end{longtable}
+\end{landscape}
+
+
+
+\begin{landscape}
+
+\section{Reactions}
+This model contains twelve reactions.
+ All reactions are listed in the following table and are subsequently described in detail. If a reaction is affected by one or more modifiers, the  identifiers of the modifier species are written above the reaction arrow.
+\begin{longtable}[h!]{rp{3cm}p{7cm}p{8cm}p{1.5cm}}
+\caption{Overview of all reactions}\\
+\toprule
+\numero&Id&Name&Reaction Equation&SBO\\
+\midrule
+\endfirsthead
+\toprule
+\numero&Id&Name&Reaction Equation&SBO\\
+\midrule
+\endhead
+1&\texttt{re1}&re1&\ce{ $\mathtt{Glu}$ ->  $\mathtt{Degraded\-\_Glu}$}&\\
+2&\texttt{re8}&re8&\ce{ $\mathtt{Gal}$ ->  $\mathtt{Degraded\-\_Gal}$}&\\
+3&\texttt{re3}&re3&\ce{ $\mathtt{Glu\-\_Sensor}$ ->  $\mathtt{Degraded\-\_Glu\-\_Sensor}$}&\\
+4&\texttt{re12}&re12&\ce{ $\mathtt{Gal}$ ->  $\mathtt{Glu\-\_Sensor}$ +  $\mathtt{Gal}$}&\\
+5&\texttt{re2}&re2&\ce{ $\mathtt{Gal\-\_Sensor}$ ->  $\mathtt{Degraded\-\_Gal\-\_Sensor}$}&\\
+6&\texttt{re6}&re6&\ce{ $\mathtt{Gal\-\_Sensor}$ +  $\mathtt{Gal}$ <=>  $\mathtt{Gal\-\_Activator}$}&\\
+7&\texttt{re4}&re4&\ce{ $\mathtt{Glu}$ ->  $\mathtt{Gal\-\_Sensor}$ +  $\mathtt{Glu}$}&\\
+8&\texttt{re5}&re5&\ce{ $\mathtt{Gal\-\_Activator}$ ->  $\mathtt{Glu\-\_to\-\_Gal}$ +  $\mathtt{Gal\-\_Activator}$}&\\
+9&\texttt{re7}&re7&\ce{ $\mathtt{Glu\-\_to\-\_Gal}$ ->  $\mathtt{Degraded\-\_Glu\-\_To\-\_Gal}$}&\\
+10&\texttt{re11}&re11&\ce{ $\mathtt{Gal\-\_to\-\_Glu}$ ->  $\mathtt{Degraded\-\_Gal\-\_To\-\_Glu}$}&\\
+11&\texttt{re9}&re9&\ce{ $\mathtt{Glu\-\_Activator}$ ->  $\mathtt{Gal\-\_to\-\_Glu}$ +  $\mathtt{Glu\-\_Activator}$}&\\
+12&\texttt{re10}&re10&\ce{ $\mathtt{Glu\-\_Sensor}$ +  $\mathtt{Glu}$ <=>  $\mathtt{Glu\-\_Activator}$}&\\
+\bottomrule\end{longtable}
+\end{landscape}
+
+
+\subsection{Reaction \texttt{re1}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re1
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu}$ ->  $\mathtt{Degraded\-\_Glu}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu}&Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Glu}&Degraded\-\_Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{1}=\mathtt{Glu}\cdot \mathtt{glu\-\_deg\-\_k}
+\label{v1}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{2}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{glu\-\_deg\-\_k}&glu\-\_deg\-\_k &&10.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re8}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re8
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal}$ ->  $\mathtt{Degraded\-\_Gal}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal}&Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Gal}&Degraded\-\_Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{2}=[\mathtt{Gal}]\cdot \mathtt{gal\-\_deg\-\_k}
+\label{v2}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{2}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{gal\-\_deg\-\_k}&gal\-\_deg\-\_k &&10.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re3}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re3
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu\-\_Sensor}$ ->  $\mathtt{Degraded\-\_Glu\-\_Sensor}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_Sensor}&Glu Sensor&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Glu\-\_Sensor}&Degraded\-\_Glu\-\_Sensor&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{3}=[\mathtt{Glu\-\_Sensor}]\cdot \mathtt{glu\-\_sensor\-\_deg\-\_k}
+\label{v3}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{glu\-\_sensor\-\_deg\-\_k}&glu\-\_sensor\-\_deg\-\_k &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re12}}
+This is an irreversible reaction of one reactant forming two products.\begin{description}
+\item[Name] re12
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal}$ ->  $\mathtt{Glu\-\_Sensor}$ +  $\mathtt{Gal}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal}&Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Products}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_Sensor}&Glu Sensor&\\
+\texttt{Gal}&Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{4}=[\mathtt{Gal}]\cdot \mathtt{k1}
+\label{v4}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{k1}&k1 &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re2}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re2
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal\-\_Sensor}$ ->  $\mathtt{Degraded\-\_Gal\-\_Sensor}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_Sensor}&Gal Sensor&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Gal\-\_Sensor}&Degraded\-\_Gal\-\_Sensor&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{5}=[\mathtt{Gal\-\_Sensor}]\cdot \mathtt{gal\-\_sensor\-\_deg\-\_k}
+\label{v5}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{gal\-\_sensor\-\_deg\-\_k}&gal\-\_sensor\-\_deg\-\_k &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re6}}
+This is a reversible reaction of two reactants forming one product.\begin{description}
+\item[Name] re6
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal\-\_Sensor}$ +  $\mathtt{Gal}$ <=>  $\mathtt{Gal\-\_Activator}$}
+
+\subsubsection*{Reactants}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_Sensor}&Gal Sensor&\\
+\texttt{Gal}&Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_Activator}&Gal Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] contains undeclared units
+\end{description}
+
+\begin{dmath}
+v_{6}=[\mathtt{Gal\-\_Sensor}]\cdot [\mathtt{Gal}]\cdot \mathtt{gal\-\_act\-\_kf}-\mathtt{gal\-\_act\-\_kr}\cdot [\mathtt{Gal\-\_Activator}]
+\label{v6}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{gal\-\_act\-\_kf}&gal\-\_act\-\_kf &&1.0&$\mathrm{mol}$&\yes\\
+\texttt{gal\-\_act\-\_kr}&gal\-\_act\-\_kr &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re4}}
+This is an irreversible reaction of one reactant forming two products.\begin{description}
+\item[Name] re4
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu}$ ->  $\mathtt{Gal\-\_Sensor}$ +  $\mathtt{Glu}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu}&Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Products}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_Sensor}&Gal Sensor&\\
+\texttt{Glu}&Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{7}=\mathtt{Glu}\cdot \mathtt{k1}
+\label{v7}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{k1}&k1 &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re5}}
+This is an irreversible reaction of one reactant forming two products.\begin{description}
+\item[Name] re5
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal\-\_Activator}$ ->  $\mathtt{Glu\-\_to\-\_Gal}$ +  $\mathtt{Gal\-\_Activator}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_Activator}&Gal Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Products}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_to\-\_Gal}&Glu-to-Gal&\\
+\texttt{Gal\-\_Activator}&Gal Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{8}=[\mathtt{Gal\-\_Activator}]\cdot \mathtt{k2}
+\label{v8}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{glu\-\_to\-\_gal\-\_k}&glu\-\_to\-\_gal\-\_k &&1.0&$\mathrm{mol}$&\yes\\
+\texttt{k2}&k2 &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re7}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re7
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu\-\_to\-\_Gal}$ ->  $\mathtt{Degraded\-\_Glu\-\_To\-\_Gal}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_to\-\_Gal}&Glu-to-Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Glu\-\_To\-\_Gal}&Degraded\-\_Glu\-\_To\-\_Gal&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{9}=[\mathtt{Glu\-\_to\-\_Gal}]\cdot \mathtt{glu\-\_to\-\_gal\-\_deg\-\_k}
+\label{v9}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{3}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{glu\-\_to\-\_gal\-\_deg\-\_k}&glu\-\_to\-\_gal\-\_deg\-\_k &&0.0010&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re11}}
+This is an irreversible reaction of one reactant forming one product.\begin{description}
+\item[Name] re11
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Gal\-\_to\-\_Glu}$ ->  $\mathtt{Degraded\-\_Gal\-\_To\-\_Glu}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_to\-\_Glu}&Gal-to-Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Degraded\-\_Gal\-\_To\-\_Glu}&Degraded\-\_Gal\-\_To\-\_Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{10}=[\mathtt{Gal\-\_to\-\_Glu}]\cdot \mathtt{gal\-\_to\-\_glu\-\_deg\-\_k}
+\label{v10}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{3}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{gal\-\_to\-\_glu\-\_deg\-\_k}&gal\-\_to\-\_glu\-\_deg\-\_k &&0.0010&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re9}}
+This is an irreversible reaction of one reactant forming two products.\begin{description}
+\item[Name] re9
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu\-\_Activator}$ ->  $\mathtt{Gal\-\_to\-\_Glu}$ +  $\mathtt{Glu\-\_Activator}$}
+
+\subsubsection*{Reactant}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_Activator}&Glu Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Products}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Gal\-\_to\-\_Glu}&Gal-to-Glu&\\
+\texttt{Glu\-\_Activator}&Glu Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] not available
+\end{description}
+
+\begin{dmath}
+v_{11}=[\mathtt{Glu\-\_Activator}]\cdot \mathtt{k1}
+\label{v11}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{gal\-\_to\-\_glu\-\_k}&gal\-\_to\-\_glu\-\_k &&1.0&$\mathrm{mol}$&\yes\\
+\texttt{k1}&k1 &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\subsection{Reaction \texttt{re10}}
+This is a reversible reaction of two reactants forming one product.\begin{description}
+\item[Name] re10
+\end{description}
+
+\subsubsection*{Reaction equation}
+\reaction{ $\mathtt{Glu\-\_Sensor}$ +  $\mathtt{Glu}$ <=>  $\mathtt{Glu\-\_Activator}$}
+
+\subsubsection*{Reactants}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each reactant.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_Sensor}&Glu Sensor&\\
+\texttt{Glu}&Glu&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Product}
+\begin{longtable}[h!]{llc}
+\caption{Properties of each product.}\\
+\toprule
+Id & Name & SBO\\
+\midrule
+\endfirsthead
+\toprule
+Id & Name & SBO\\
+\midrule
+\endhead
+\texttt{Glu\-\_Activator}&Glu Activator&\\
+\bottomrule\end{longtable}
+
+\subsubsection*{Kinetic Law}
+\begin{description}
+\item[Derived unit] contains undeclared units
+\end{description}
+
+\begin{dmath}
+v_{12}=[\mathtt{Glu\-\_Sensor}]\cdot \mathtt{Glu}\cdot \mathtt{glu\-\_act\-\_kf}-\mathtt{glu\-\_act\-\_kr}\cdot [\mathtt{Glu\-\_Activator}]
+\label{v12}
+\end{dmath}
+\begin{longtable}[h!]{p{2.5cm}p{3cm}cR{1}{1}p{3cm}c}
+\caption{Properties of each parameter.}\\
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{1}{l}{Id}&Name&SBO&\multicolumn{1}{c}{Value}&Unit&\multicolumn{1}{c}{Constant}\\
+\midrule
+\endhead
+\texttt{glu\-\_act\-\_kf}&glu\-\_act\-\_kf &&1.0&$\mathrm{mol}$&\yes\\
+\texttt{glu\-\_act\-\_kr}&glu\-\_act\-\_kr &&1.0&$\mathrm{mol}$&\yes\\
+\bottomrule\end{longtable}
+
+
+\section{Derived Rate Equations}
+\label{sec:DerivedRateEquations}
+When interpreted as an ordinary differential equation framework, this model implies the following set of equations for the rates of change of each species. 
+
+Identifiers for kinetic laws highlighted in \colorbox{lightgray}{gray} cannot be verified  to evaluate to units of SBML \texttt{substance} per \texttt{time}. As a result, some SBML interpreters may not be able to verify the consistency of the units on quantities in the model. Please check if 
+\begin{itemize}
+\item parameters without a unit definition are involved or
+\item volume correction is necessary because the \texttt{has\-Only\-Substance\-Units} flag may be set to \texttt{false} and \texttt{spacial\-Di\-men\-si\-ons}$> 0$ for certain species.
+\end{itemize}
+
+\subsection{Species \texttt{Gal}}
+\begin{description}
+\item[Name] Gal
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in four reactions (as a reactant in  \hyperref[v2]{\texttt{re8}}, \hyperref[v4]{\texttt{re12}}, \hyperref[v6]{\texttt{re6}} and as a product in  \hyperref[v4]{\texttt{re12}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Gal} = \hyperref[v4]{\colorbox{lightgray}{$v_{4}$}}-\hyperref[v2]{\colorbox{lightgray}{$v_{2}$}}-\hyperref[v4]{\colorbox{lightgray}{$v_{4}$}}-\hyperref[v6]{\colorbox{lightgray}{$v_{6}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Glu}}
+\begin{description}
+\item[Name] Glu
+\item[Initial amount] $0\;\mathrm{mol}$
+\item[Charge] 0
+\end{description}
+This species takes part in four reactions (as a reactant in  \hyperref[v1]{\texttt{re1}}, \hyperref[v7]{\texttt{re4}}, \hyperref[v12]{\texttt{re10}} and as a product in  \hyperref[v7]{\texttt{re4}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Glu} = \hyperref[v7]{\colorbox{lightgray}{$v_{7}$}}-\hyperref[v1]{\colorbox{lightgray}{$v_{1}$}}-\hyperref[v7]{\colorbox{lightgray}{$v_{7}$}}-\hyperref[v12]{\colorbox{lightgray}{$v_{12}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Gal\-\_Sensor}}
+\begin{description}
+\item[Name] Gal Sensor
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in three reactions (as a reactant in  \hyperref[v5]{\texttt{re2}}, \hyperref[v6]{\texttt{re6}} and as a product in  \hyperref[v7]{\texttt{re4}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Gal\-\_Sensor} = \hyperref[v7]{\colorbox{lightgray}{$v_{7}$}}-\hyperref[v5]{\colorbox{lightgray}{$v_{5}$}}-\hyperref[v6]{\colorbox{lightgray}{$v_{6}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Glu}}
+\begin{description}
+\item[Name] Degraded\-\_Glu
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v1]{\texttt{re1}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Glu} = \hyperref[v1]{\colorbox{lightgray}{$v_{1}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Gal}}
+\begin{description}
+\item[Name] Degraded\-\_Gal
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v2]{\texttt{re8}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Gal} = \hyperref[v2]{\colorbox{lightgray}{$v_{2}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Glu\-\_Sensor}}
+\begin{description}
+\item[Name] Glu Sensor
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in three reactions (as a reactant in  \hyperref[v3]{\texttt{re3}}, \hyperref[v12]{\texttt{re10}} and as a product in  \hyperref[v4]{\texttt{re12}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Glu\-\_Sensor} = \hyperref[v4]{\colorbox{lightgray}{$v_{4}$}}-\hyperref[v3]{\colorbox{lightgray}{$v_{3}$}}-\hyperref[v12]{\colorbox{lightgray}{$v_{12}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Gal\-\_Activator}}
+\begin{description}
+\item[Name] Gal Activator
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in three reactions (as a reactant in  \hyperref[v8]{\texttt{re5}} and as a product in  \hyperref[v6]{\texttt{re6}}, \hyperref[v8]{\texttt{re5}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Gal\-\_Activator} = \hyperref[v6]{\colorbox{lightgray}{$v_{6}$}} + \hyperref[v8]{\colorbox{lightgray}{$v_{8}$}}-\hyperref[v8]{\colorbox{lightgray}{$v_{8}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Glu\-\_to\-\_Gal}}
+\begin{description}
+\item[Name] Glu-to-Gal
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in two reactions (as a reactant in  \hyperref[v9]{\texttt{re7}} and as a product in  \hyperref[v8]{\texttt{re5}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Glu\-\_to\-\_Gal} = \hyperref[v8]{\colorbox{lightgray}{$v_{8}$}}-\hyperref[v9]{\colorbox{lightgray}{$v_{9}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Glu\-\_Activator}}
+\begin{description}
+\item[Name] Glu Activator
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in three reactions (as a reactant in  \hyperref[v11]{\texttt{re9}} and as a product in  \hyperref[v11]{\texttt{re9}}, \hyperref[v12]{\texttt{re10}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Glu\-\_Activator} = \hyperref[v11]{\colorbox{lightgray}{$v_{11}$}} + \hyperref[v12]{\colorbox{lightgray}{$v_{12}$}}-\hyperref[v11]{\colorbox{lightgray}{$v_{11}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Gal\-\_to\-\_Glu}}
+\begin{description}
+\item[Name] Gal-to-Glu
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in two reactions (as a reactant in  \hyperref[v10]{\texttt{re11}} and as a product in  \hyperref[v11]{\texttt{re9}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Gal\-\_to\-\_Glu} = \hyperref[v11]{\colorbox{lightgray}{$v_{11}$}}-\hyperref[v10]{\colorbox{lightgray}{$v_{10}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Glu\-\_Sensor}}
+\begin{description}
+\item[Name] Degraded\-\_Glu\-\_Sensor
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v3]{\texttt{re3}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Glu\-\_Sensor} = \hyperref[v3]{\colorbox{lightgray}{$v_{3}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Gal\-\_Sensor}}
+\begin{description}
+\item[Name] Degraded\-\_Gal\-\_Sensor
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v5]{\texttt{re2}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Gal\-\_Sensor} = \hyperref[v5]{\colorbox{lightgray}{$v_{5}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Glu\-\_To\-\_Gal}}
+\begin{description}
+\item[Name] Degraded\-\_Glu\-\_To\-\_Gal
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v9]{\texttt{re7}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Glu\-\_To\-\_Gal} = \hyperref[v9]{\colorbox{lightgray}{$v_{9}$}}
+\end{dmath}
+
+\subsection{Species \texttt{Degraded\-\_Gal\-\_To\-\_Glu}}
+\begin{description}
+\item[Name] Degraded\-\_Gal\-\_To\-\_Glu
+\item[Initial amount] $0\;\mathrm{mol}$
+\end{description}
+This species takes part in one reaction (as a product in  \hyperref[v10]{\texttt{re11}}).
+
+\begin{dmath}
+\frac{\mathrm d}{\mathrm dt} \mathtt{Degraded\-\_Gal\-\_To\-\_Glu} = \hyperref[v10]{\colorbox{lightgray}{$v_{10}$}}
+\end{dmath}
+
+\appendix
+
+\section{Model Consistency Report}
+Currently, the Java\texttrademark{} library \href{http://jsbml.sourceforge.net}{JSBML}, which is used by the documentation tool \SBMLLaTeX, does not provide an implementation for full SBML consistency checks. Hence, at this position this report cannot highlight any problems in the SBML document, which does not mean that it is entirely correct. Please visit the website \href{http://sbml.org}{sbml.org} and use the SBML validator there.
+
+\begin{thebibliography}{}
+\bibitem[Dr\"ager {\em et~al.}(2009)Dr\"ager, Planatscher, Wouamba, Schr\"oder,
+  Hucka, Endler, Golebiewski, M{\"u}ller, and Zell]{Draeger2009b}
+Dr\"ager, A., Planatscher, H., Wouamba, D.~M., Schr\"oder, A., Hucka, M.,
+  Endler, L., Golebiewski, M., M{\"u}ller, W., and Zell, A. (2009).
+\newblock {SBML2\LaTeX: Conversion of SBML files into human-readable reports}.
+\newblock {Bioinformatics}, {\bf 25}(11), 1455--1456. \href{http://dx.doi.org/10.1093/bioinformatics/btp170}{10.1093/bioinformatics/btp170}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,20 @@
+{"num_outputs": 2, # number of possible outputs (carbon sources)
+ # number of possible switch states (hidden) 
+ "num_switch_states": 2,
+ # hyperparams for prior on switch state
+ "init_switch_hyperparams": [1., 1.],
+ # hyperparams for prior on carbon state 
+ "init_out_hyperparams": [1.],  
+ # prior on switch transition probabilities
+ "switch_trans_mat_hyperparams": [[1., 1.], [1., 1.]],
+ # prior on emission probabilities
+ "out_trans_mat_hyperparams": [[1., 1.], [1., 1.]],
+ # value of sticky prior on switching transition matrix
+ "sticky_switch_weight": 1.,
+ # step size for internal model comparisons
+ "step_size": 1,
+ # time lag for decisions: amount of time (in hours) between
+ # from exposure to stimulus to decision time
+ # e.g. if time_to_decision = 1, then cells make a decision
+ # 1 hour before
+ "decision_lag_time": 1}

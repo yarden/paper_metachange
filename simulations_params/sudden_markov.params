@@ -1,0 +1,33 @@
+{"prior_alpha": 1, # prior on learning transition parameters
+ "prior_beta": 1,  # of Markov model
+ "p_error": 0.01,
+ "prior_carbon_state": 0.5,
+ # transition probs from gluc to galac
+ # and galac to gluc
+ "true_gluc_to_gluc": 0.8,
+ "true_galac_to_gluc": 0.2,
+ # gluc and galac growth rates
+ "gluc_growth_rate": 0.3,
+ "galac_growth_rate": 0.04,
+ # growth rate when environment mismatches cell state
+ "mismatch_growth_rate": 0.00,
+ # time start for simulation
+ "time_start": 0,
+ "time_end": 20,
+ # what each step size is (in hours!)
+ # e.g. step_size = 1 means each step is
+ # one hour
+ "step_size": 1,
+ "nutr_labels": ["glucose", "galactose"],
+ # time lag for decisions: amount of time (in hours) between
+ # from exposure to stimulus to decision time
+ # e.g. if time_to_decision = 1, then cells make a decision
+ # 1 hour before
+ "decision_lag_time": 1,
+ # number of iterations
+ "num_sim_iters": 500,
+ # initial population size
+ "init_pop_size": [1000, 0],
+ # values for glucose and galactose nutrients
+ "gluc_val": True,
+ "galac_val": False}

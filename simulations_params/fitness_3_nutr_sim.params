@@ -1,0 +1,14 @@
+{"t_start": 0,
+ "t_end": 99,
+ "step_size": 1,
+ # default parameters for simulation
+ "decision_lag_time": 1,
+ "init_pop_sizes": [1000, 0, 0],
+ "num_sim_iters": 10,
+ "nutr_labels": ["glucose", "galactose", "maltose"],
+ "nutr_growth_rates": [0.3, 0.075, 0.075],
+ "mismatch_growth_rate": 0.00,
+ "num_switch_states": 2,
+ "p_switch_to_switch": 0.8,
+ "p_noswitch_to_switch": 0.2,
+ "p_init_output": 0.5}
