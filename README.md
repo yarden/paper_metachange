@@ -8,7 +8,7 @@ Yarden Katz and Michael Springer, "Probabilistic adaptation in changing microbia
 Installing the code
 -----------------
 
-The code can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``). Unit tests can be run using: ::
+The code can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``). Unit tests can be run using: 
 
     cd ./paper_metachange
     python testing.py
@@ -27,7 +27,7 @@ The directories are organized as follows:
 Producing figures
 ------------------
 
-Figures are generated using a [ruffus](http://www.ruffus.org.uk/) pipeline by running: ::
+Figures are generated using a [ruffus](http://www.ruffus.org.uk/) pipeline by running:
 
     cd paper_metachange
     python make_paper.py
