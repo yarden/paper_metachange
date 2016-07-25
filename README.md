@@ -3,7 +3,8 @@ Probabilistic adaptation in changing microbial environments
 
 Code for the manuscript:
 
-Yarden Katz and Michael Springer, "Probabilistic adaptation in changing microbial environments", July 2016.
+Yarden Katz and Michael Springer,
+["Probabilistic adaptation in changing microbial environments"](http://biorxiv.org/content/early/2016/07/22/065243), *bioRxiv*, July 2016.
 
 Installing the code
 -----------------
