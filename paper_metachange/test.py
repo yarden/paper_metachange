@@ -35,7 +35,6 @@ for sim_name in results:
         if utils.all_match(curr_params, results[sim_name]["params"]):
             sims_to_plot.append(sim_name)
 
-
 def get_spline_derivs(x, y):
     """
     Get spline fitting-based derivatives.
@@ -43,7 +42,6 @@ def get_spline_derivs(x, y):
     spl = scipy.interpolate.UnivariateSpline(x, y, k=4, s=1)
     deriv = spl.derivative()
     return deriv(x)
-
 
 sim_to_plot = sims_to_plot[0]            
 df = results[sim_to_plot]["data"]
