@@ -620,6 +620,11 @@ def plot_fitness_simulation(df, params,
                             x_step=None,
                             ymax=None,
                             legend=False):
+    """
+    Plot result of fitness simulation.
+
+    Plot growth rate as a function of time.
+    """
     sns.set_style("ticks")
    # plot population size
     popsizes = fitness.str_popsizes_to_array(df["log_pop_sizes"])
@@ -636,7 +641,17 @@ def plot_fitness_simulation(df, params,
     grouped = df.groupby(["t", "policy"], as_index=False)
     summary_df = grouped.agg({"log2_pop_size": [np.mean, np.std],
                               "growth_rates": [np.mean, np.std]})
-    rand_summary = summary_df[summary_df["policy"] == "Random"]
+    print "SUMMARY DF: "
+    print summary_df.head(n=50)
+    print " -- "
+    print summary_df.diff(axis=1), " <<"
+    raise Exception, "test"
+    # first set to all np.nan
+    summary_df["emp_growth_rate"] = np.nan
+#    raise Exception, "test"
+    # then take derivative with step 1
+#    summary_df["emp_growth_rate"] = np.diff(summary_df["
+#    rand_summary = summary_df[summary_df["policy"] == "Random"]
     time_obj = time_unit.Time(params["t_start"],
                               params["t_end"],
                               step_size=params["step_size"])
@@ -648,7 +663,13 @@ def plot_fitness_simulation(df, params,
                                   ymax=ymax):
         offset = step_size / 250.
         num_xticks = 11
-        ax = sns.tsplot(time="t", value="log2_pop_size", unit="sim_num",
+#        ax = sns.tsplot(time="t", value="log2_pop_size", unit="sim_num",
+#                        condition="policy", color=policy_colors,
+#                        err_style="ci_band",
+#                        ci=95,
+#                        data=df,
+#                        legend=legend)
+        ax = sns.tsplot(time="t", value="growth_rates", unit="sim_num",
                         condition="policy", color=policy_colors,
                         err_style="ci_band",
                         ci=95,
@@ -657,13 +678,11 @@ def plot_fitness_simulation(df, params,
         for policy_num, policy in enumerate(policy_colors):
             error_df = summary_df[summary_df["policy"] == policy]
             c = policy_colors[policy]
-            assert (len(error_df["t"]) == len(time_obj.t) == \
-                    len(error_df["log2_pop_size"]["mean"])), \
-              "Dataframe values for pop. size don\'t match time units."
+            # assert (len(error_df["t"]) == len(time_obj.t) == \
+            #         len(error_df["log2_pop_size"]["mean"])), \
+            #   "Dataframe values for pop. size don\'t match time units."
         plt.xlabel("")
         plt.ylabel("")
-#        plt.xlabel("Time step", fontsize=10)
-#        plt.ylabel("Pop. size ($\log_{2}$)", fontsize=10)
         # assuming glucose is listed first
         gluc_growth_rate = params["nutr_growth_rates"][0]
         galac_growth_rate = params["nutr_growth_rates"][1]
@@ -682,18 +701,18 @@ def plot_fitness_simulation(df, params,
                      fontsize=8)
         c = 0.5
         plt.xlim([min(df["t"]) - c, max(df["t"]) + c])
-        if ymin is None:
-            ymin = int(np.log2(init_pop_size))
-        plt.ylim(ymin=ymin)
+#        if ymin is None:
+#            ymin = int(np.log2(init_pop_size))
+#        plt.ylim(ymin=ymin)
         plt.xlim([time_obj.t.min(),
                   time_obj.t.max()])
         plt.xticks(range(int(time_obj.t.min()),
                          int(time_obj.t.max()) + x_step,
                              x_step),
                    fontsize=8)
-        if yticks is not None:
-            plt.yticks(yticks, fontsize=8)
-            plt.ylim(yticks[0], yticks[-1])
+#        if yticks is not None:
+#            plt.yticks(yticks, fontsize=8)
+#            plt.ylim(yticks[0], yticks[-1])
         sns.despine(trim=True, offset=2*time_obj.step_size,
                     ax=ax)
         ax.tick_params(axis='both', which='major', labelsize=8,
