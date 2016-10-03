@@ -116,7 +116,7 @@ def make_figure1(start_fname, plot_fname, label,
     gs.update(hspace=0.71,
               top=0.94,
               bottom=0.38,
-              left=0.18,
+              left=0.20,
               right=0.91)
     ## nutrient levels
     ax1 = plt.subplot(gs[0, 0])
@@ -143,13 +143,9 @@ def make_figure1(start_fname, plot_fname, label,
     plt.ylim(0, 1 + c)
     plt.xlim(0 - c, nutr1_x[-1] + c)
     plt.xticks(time_axis)
-    #frame1 = plt.gca()
-    #frame1.axes.get_xaxis().set_visible(False)
     plt.yticks(np.arange(0, 1.5, 0.5), fontsize=8)
-#    plt.xlabel("Time step", fontsize=labels_fontsize)
     plt.ylabel("Nutr. level", fontsize=labels_fontsize)
     from matplotlib.ticker import FormatStrFormatter
-#                           height_ratios=[0.2, 0.05])
     ax1.yaxis.set_major_formatter(FormatStrFormatter('%.1f'))
     box = ax1.get_position()
     handles, labels = ax1.get_legend_handles_labels()
@@ -167,6 +163,15 @@ def make_figure1(start_fname, plot_fname, label,
                  xycoords="figure fraction",
                  fontsize=PANEL_LABEL_FONTSIZE,
                  fontweight="bold")
+    ## draw line to indicate gut-related changes
+    plt.annotate(r"Gut-related changes", xy=(panel_label_x, 0.68),
+                 xycoords="figure fraction",
+                 rotation=90,
+                 fontsize=8)
+    ax1.annotate('', xy=(-0.30, -0.5),
+                 xycoords='axes fraction',
+                 xytext=(-0.30, -1.0), 
+                 arrowprops=dict(arrowstyle="->", color='k'))
     ## temperature
     ax2 = plt.subplot(gs[1, 0])
     plt.ylabel("Temp. (C)", fontsize=labels_fontsize)
@@ -401,9 +406,11 @@ def plot_figure2_panel_A(main_ax, gs,
 def plot_figure2_panel_B(main_ax, gs,
                          panel_label_x=0.01):
     params = simulation.load_params(pipeline_sudden.MARKOV_PARAM_FNAME)
-    params["gluc_growth_rate"] = 0.3
+    #params["gluc_growth_rate"] = 0.3
+    #galac_growth_rates = [0.075, 0.15, 0.28]
+    params["gluc_growth_rate"] = 0.7
+    galac_growth_rates = [0.175, 0.35, 0.68]
     # 4-fold lower growth rate, 2-fold, nearly equal growth rates
-    galac_growth_rates = [0.075, 0.15, 0.28]
     num_plots = len(galac_growth_rates)
     sns.set_style("white")
     for plot_num, galac_growth_rate in enumerate(galac_growth_rates):

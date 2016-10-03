@@ -89,8 +89,10 @@ def plot_sudden_markov_fixed_decision_mat(input_fname, plot_fname, label):
     print "plotting: %s" %(os.path.basename(plot_fname))
     plt.figure(figsize=(5, 4))
     params = simulation.load_params(MARKOV_PARAM_FNAME)
-    params["gluc_growth_rate"] = 0.3
-    params["galac_growth_rate"] = 0.075
+#    params["gluc_growth_rate"] = 0.3
+#    params["galac_growth_rate"] = 0.075
+    params["gluc_growth_rate"] = 0.7
+    params["galac_growth_rate"] = 0.175
     model_sudden_markov.plot_decision_mat(params)
     plt.tight_layout()
     plt.savefig(plot_fname)
@@ -108,9 +110,11 @@ def plot_sudden_markov_variable_decision_mat(input_fname, plot_fname, label):
     print "plotting: %s" %(os.path.basename(plot_fname))
     fig = plt.figure(figsize=(6, 3.1))
     params = simulation.load_params(MARKOV_PARAM_FNAME)
-    params["gluc_growth_rate"] = 0.3
+#    params["gluc_growth_rate"] = 0.3
+#    galac_growth_rates = [0.075, 0.15, 0.28]
+    params["gluc_growth_rate"] = 0.7
     # 4-fold lower growth rate, 2-fold, nearly equal growth rates
-    galac_growth_rates = [0.075, 0.15, 0.28]
+    galac_growth_rates = [0.175, 0.35, 0.68]
     num_plots = len(galac_growth_rates)
     # set heatmap aspect equal
     plt.gca().set_aspect("equal")
@@ -588,8 +592,10 @@ def plot_sudden_markov_multinutr_environments(input_fname, plot_fname, label):
     plt.savefig(plot_fname)
 
 def get_sudden_markov_fitness_params():
-    gluc_growth_rates = [0.3]
-    galac_growth_rates = [0.04, 0.15, 0.29]
+#    gluc_growth_rates = [0.3]
+#    galac_growth_rates = [0.04, 0.15, 0.29]
+    gluc_growth_rates = [0.7]
+    galac_growth_rates = [0.175, 0.35, 0.68]
     gluc_to_gluc_probs = [0.1, 0.3, 0.5, 0.8]
     galac_to_gluc_probs = [0.1, 0.3, 0.5, 0.8]
     sim_cond = 1
