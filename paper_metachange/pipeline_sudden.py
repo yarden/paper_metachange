@@ -89,10 +89,8 @@ def plot_sudden_markov_fixed_decision_mat(input_fname, plot_fname, label):
     print "plotting: %s" %(os.path.basename(plot_fname))
     plt.figure(figsize=(5, 4))
     params = simulation.load_params(MARKOV_PARAM_FNAME)
-#    params["gluc_growth_rate"] = 0.3
-#    params["galac_growth_rate"] = 0.075
-    params["gluc_growth_rate"] = 0.7
-    params["galac_growth_rate"] = 0.175
+    params["gluc_growth_rate"] = 0.3
+    params["galac_growth_rate"] = 0.075
     model_sudden_markov.plot_decision_mat(params)
     plt.tight_layout()
     plt.savefig(plot_fname)
@@ -110,11 +108,9 @@ def plot_sudden_markov_variable_decision_mat(input_fname, plot_fname, label):
     print "plotting: %s" %(os.path.basename(plot_fname))
     fig = plt.figure(figsize=(6, 3.1))
     params = simulation.load_params(MARKOV_PARAM_FNAME)
-#    params["gluc_growth_rate"] = 0.3
-#    galac_growth_rates = [0.075, 0.15, 0.28]
-    params["gluc_growth_rate"] = 0.7
+    params["gluc_growth_rate"] = 0.3
     # 4-fold lower growth rate, 2-fold, nearly equal growth rates
-    galac_growth_rates = [0.175, 0.35, 0.68]
+    galac_growth_rates = [0.075, 0.15, 0.28]
     num_plots = len(galac_growth_rates)
     # set heatmap aspect equal
     plt.gca().set_aspect("equal")
@@ -321,6 +317,13 @@ def get_switch_ssm_fitness_params():
       np.array([[0.05, 0.9, 0.05],
                 [0.1, 0.6, 0.3],
                 [0.05, 0.05, 0.9]])
+    ### READ THESE FROM FILE
+    # load 2-nutrient params file
+    two_nutr_params = simulation.load_params(FITNESS_2_NUTR_SIM_PARAM_FNAME)
+    two_nutr_growth_rates = two_nutr_params["nutr_growth_rates"]
+    # load 3-nutrient params file
+    three_nutr_params = simulation.load_params(FITNESS_3_NUTR_SIM_PARAM_FNAME)
+    three_nutr_growth_rates = three_nutr_params["nutr_growth_rates"]
     # 2-nutrient parameters
     nutrient_params = \
       {"2_nutr": \
@@ -332,7 +335,7 @@ def get_switch_ssm_fitness_params():
         #            [gluc_growth_rate2, galac_growth_rate2],
         #            ...]
         "all_nutr_growth_rates": \
-        [[0.3, 0.3/2.]],
+        [two_nutr_growth_rates],
         "all_out_trans_mats": \
         [[np.array([[0., 1],
                     [1., 0]]),
@@ -343,7 +346,7 @@ def get_switch_ssm_fitness_params():
         "model_params_fname": SSM_3_NUTR_PARAM_FNAME,
         "nutr_labels": ["glucose", "galactose", "maltose"],
         "all_nutr_growth_rates": \
-        [[0.3, 0.3/2., 0.3/2.]],
+        [three_nutr_growth_rates],
         "all_out_trans_mats": \
         [[glu_pred_gal_pred_mal_trans_mat,
           periodic_sticky_mal_trans_mat]]}}
@@ -390,9 +393,6 @@ def run_switch_ssm_fitness_simulations(input_fnames, output_fname,
     fitness_params_fname = input_fnames[0]
     ssm_params_fname = input_fnames[1]
     params = simulation.load_params(fitness_params_fname)
-    print "FITNESS PARAMETERS: "
-    print params
-    raise Exception, "switch"
     model_params = simulation.load_params(ssm_params_fname)
     params.update(model_params)
     all_policies = OrderedDict()

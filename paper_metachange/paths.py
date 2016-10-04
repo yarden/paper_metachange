@@ -48,7 +48,6 @@ SIM_DATA_DIR = os.path.join(MAIN_DIR, "simulations_data")
 utils.make_dir(SIM_DATA_DIR)
 
 SIM_PARAMS_DIR = os.path.join(MAIN_DIR, "simulations_params")
-utils.make_dir(SIM_PARAMS_DIR)
 
 # sudden switch environments
 SUDDEN_DATA_DIR = os.path.join(SIM_DATA_DIR, "sudden_switch")

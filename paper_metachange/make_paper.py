@@ -777,7 +777,7 @@ def make_figure4(input_fname, plot_fname, label):
     y_step = 10
     max_y = 40
     # growth rate yticks
-    yticks = np.linspace(0., 0.35, 8)
+    yticks = np.linspace(0., 0.35, 6)
     x_step = 20
     assert (num_plots == 4 == len(subplot_pos)), \
       "Expected 4 simulations to plot."
@@ -909,7 +909,7 @@ def make_figure5(input_fname, plot_fname, label):
     num_plots = len(sims_to_plot)
     y_step = 10
     max_y = 30
-    yticks = np.linspace(0., 0.35, 8)
+    yticks = np.linspace(0., 0.35, 6)[0:-2]
     x_step = 20
     assert (num_plots == 4 == len(subplot_pos)), \
       "Expected 4 simulations to plot."
@@ -963,7 +963,7 @@ def make_figure5(input_fname, plot_fname, label):
                  xycoords="figure fraction",
                  fontsize=10)
     plt.annotate(r"Growth rate",
-                 xy=(0.01, sim_top - 0.225),
+                 xy=(0.01, sim_top - 0.159),
                  xycoords="figure fraction",
                  rotation=90,
                  fontsize=10)

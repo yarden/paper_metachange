@@ -95,7 +95,7 @@ def smooth_growth_policy(time_obj, env, params):
 
 def fitness_simulations(params):
     """
-    Fitness simulations.
+    Run fitness simulations.
     """
     true_gluc_to_gluc = params["true_gluc_to_gluc"]
     true_galac_to_gluc = params["true_galac_to_gluc"]
@@ -304,8 +304,8 @@ def decision_ratio(policy1, policy2, params,
 
 
 def test_decision_analysis():
-    params = {"gluc_growth_rate": 0.3,
-              "galac_growth_rate": 0.3/7.}
+    params = {"gluc_growth_rate": 0.7,
+              "galac_growth_rate": 0.7/4.}
     # both probabilities > 0.5
     probs = np.linspace(0.5, 1, 11)
     policy1 = "adaptive"
