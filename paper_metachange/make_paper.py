@@ -39,6 +39,7 @@ import model_flat_bayes
 import pipeline_sudden
 import plot_utils
 import prob_utils
+import stat_utils
 import utils
 import sbml
 
@@ -614,6 +615,7 @@ def make_figure3(input_fname, plot_fname, label,
     plt.savefig(plot_fname)
 
 
+
 def plot_fitness_simulation(df, params,
                             title=None,
                             yticks=None,
@@ -625,6 +627,23 @@ def plot_fitness_simulation(df, params,
 
     Plot growth rate as a function of time.
     """
+    def get_fitted_growth_rates(df, k=4, s=1.5):
+        g = df.groupby(["policy", "sim_num"])
+        new_df = []
+        for name, group in g:
+            curr_df = group.copy()
+            curr_df["fitted_growth_rate"] = \
+              stat_utils.get_spline_fit(curr_df["t"],
+                                        curr_df["growth_rates"],
+                                        k=k, s=s)
+            curr_df["fitted_growth_rate_from_pop"] = \
+              stat_utils.get_spline_derivs_fit(curr_df["t"],
+                                               curr_df["log2_pop_size"],
+                                               k=k, s=s)
+            new_df.append(curr_df)
+        new_df = pandas.concat(new_df)
+        return new_df
+    
     sns.set_style("ticks")
    # plot population size
     popsizes = fitness.str_popsizes_to_array(df["log_pop_sizes"])
@@ -636,29 +655,21 @@ def plot_fitness_simulation(df, params,
     # only plot policies we have colors for
     policies_with_colors = policy_colors.keys()
     df = df[df["policy"].isin(policies_with_colors)]
+    # get data from with fitted growth rates
+    df_with_fits = get_fitted_growth_rates(df)
     init_pop_size = sum(params["init_pop_sizes"])
     # group results by time and by policy
-    grouped = df.groupby(["t", "policy"], as_index=False)
+    grouped = df_with_fits.groupby(["t", "policy"], as_index=False)
     summary_df = grouped.agg({"log2_pop_size": [np.mean, np.std],
-                              "growth_rates": [np.mean, np.std]})
-    print "SUMMARY DF: "
-    print summary_df.head(n=50)
-    print " -- "
-    print summary_df.diff(axis=1), " <<"
-    raise Exception, "test"
-    # first set to all np.nan
-    summary_df["emp_growth_rate"] = np.nan
-#    raise Exception, "test"
-    # then take derivative with step 1
-#    summary_df["emp_growth_rate"] = np.diff(summary_df["
-#    rand_summary = summary_df[summary_df["policy"] == "Random"]
+                              "growth_rates": [np.mean, np.std],
+                              "fitted_growth_rate_from_pop": [np.mean, np.std]})
     time_obj = time_unit.Time(params["t_start"],
                               params["t_end"],
                               step_size=params["step_size"])
     step_size = params["step_size"]
-    final_df = summary_df[summary_df["t"] == time_obj.t[-1]]
     ## plot population size across time
-    def plot_pop_size_across_time(params,
+    def plot_pop_size_across_time(df_to_plot,
+                                  params,
                                   ymin=ymin,
                                   ymax=ymax):
         offset = step_size / 250.
@@ -667,13 +678,13 @@ def plot_fitness_simulation(df, params,
 #                        condition="policy", color=policy_colors,
 #                        err_style="ci_band",
 #                        ci=95,
-#                        data=df,
+#                        data=df_to_plot,
 #                        legend=legend)
-        ax = sns.tsplot(time="t", value="growth_rates", unit="sim_num",
+        ax = sns.tsplot(time="t", value="fitted_growth_rate_from_pop", unit="sim_num",
                         condition="policy", color=policy_colors,
                         err_style="ci_band",
                         ci=95,
-                        data=df,
+                        data=df_to_plot,
                         legend=legend)
         for policy_num, policy in enumerate(policy_colors):
             error_df = summary_df[summary_df["policy"] == policy]
@@ -710,16 +721,16 @@ def plot_fitness_simulation(df, params,
                          int(time_obj.t.max()) + x_step,
                              x_step),
                    fontsize=8)
-#        if yticks is not None:
-#            plt.yticks(yticks, fontsize=8)
-#            plt.ylim(yticks[0], yticks[-1])
+        if yticks is not None:
+            plt.yticks(yticks, fontsize=8)
+            plt.ylim(yticks[0], yticks[-1])
         sns.despine(trim=True, offset=2*time_obj.step_size,
                     ax=ax)
         ax.tick_params(axis='both', which='major', labelsize=8,
                        pad=2)
         return ax
     # make plot
-    ax = plot_pop_size_across_time(params)
+    ax = plot_pop_size_across_time(df_with_fits, params)
     return ax
 
 
@@ -729,7 +740,7 @@ def plot_fitness_simulation(df, params,
        "figure4")
 def make_figure4(input_fname, plot_fname, label):
     """
-    Figure 4: Population size simulations for different growth
+    Figure 4: Growth rate simulations for different growth
     strategies.
     """
     print "plotting fitness simulation for switch ssm"
@@ -765,13 +776,14 @@ def make_figure4(input_fname, plot_fname, label):
     sns.set_style("ticks")
     y_step = 10
     max_y = 40
-    yticks = np.arange(10, max_y + y_step, y_step)
+    # growth rate yticks
+    yticks = np.linspace(0., 0.35, 8)
     x_step = 20
     assert (num_plots == 4 == len(subplot_pos)), \
       "Expected 4 simulations to plot."
     gs = gridspec.GridSpec(num_plots / 2, num_plots)
     top = 0.70
-    gs.update(right=1.75, left=0.15, top=top, hspace=0.45,
+    gs.update(right=1.75, left=0.18, top=top, hspace=0.45,
               wspace=0.4)
     axes = []
     for n, sim_to_plot in enumerate(sims_to_plot):
@@ -817,8 +829,8 @@ def make_figure4(input_fname, plot_fname, label):
                  xy=(0.46, 0.01),
                  xycoords="figure fraction",
                  fontsize=10)
-    plt.annotate(r"Population size ($\log_{2}$)",
-                 xy=(0.01, 0.53),
+    plt.annotate(r"Growth rate",
+                 xy=(0.0099, 0.460),
                  xycoords="figure fraction",
                  rotation=90,
                  fontsize=10)
@@ -897,7 +909,7 @@ def make_figure5(input_fname, plot_fname, label):
     num_plots = len(sims_to_plot)
     y_step = 10
     max_y = 30
-    yticks = np.arange(10, max_y + y_step, y_step)
+    yticks = np.linspace(0., 0.35, 8)
     x_step = 20
     assert (num_plots == 4 == len(subplot_pos)), \
       "Expected 4 simulations to plot."
@@ -950,7 +962,7 @@ def make_figure5(input_fname, plot_fname, label):
                  xy=(0.46, 0.01),
                  xycoords="figure fraction",
                  fontsize=10)
-    plt.annotate(r"Population size ($\log_{2}$)",
+    plt.annotate(r"Growth rate",
                  xy=(0.01, sim_top - 0.125),
                  xycoords="figure fraction",
                  rotation=90,
@@ -1621,7 +1633,7 @@ def make_supp_figure3(input_fname, plot_fname, label):
     sns.set_style("ticks")
     y_step = 10
     max_y = 40
-    yticks = np.arange(10, max_y + y_step, y_step)
+    yticks = np.linspace(0., 0.35, 8)
     x_step = 20
     assert (num_plots == 4 == len(subplot_pos)), \
       "Expected 4 simulations to plot."
@@ -1679,7 +1691,7 @@ def make_supp_figure3(input_fname, plot_fname, label):
                  xy=(0.46, 0.01),
                  xycoords="figure fraction",
                  fontsize=10)
-    plt.annotate(r"Population size ($\log_{2}$)",
+    plt.annotate(r"Growth rate",
                  xy=(0.01, 0.74 * sim_top),
                  xycoords="figure fraction",
                  rotation=90,

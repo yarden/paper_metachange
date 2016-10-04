@@ -133,7 +133,7 @@ def run_bet_hedge_sim():
     nutr_labels = ["glucose", "galactose"]
     env_obj = \
       env.MixedDiscEnvironment(nutr_labels, nutrients.discrete_markov_glucose,
-                               nutr_growth_rates=[0.3, 0.3/4],
+                               nutr_growth_rates=[0.7, 0.7/4],
                                mismatch_growth_rate=0.0)
 #    step_size = 0.5
 #    time_obj = time_unit.Time(0, 10, step_size)

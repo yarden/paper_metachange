@@ -33,7 +33,6 @@ def get_spline_slopes(x, y, kind="linear", num_bins=20,
     slopes = map(lambda pair: pair[-1] - pair[0],
                  utils.rolling_window(y_coarse[inds], 2))
     slopes = np.array(slopes)
-    print slopes, " <<< "
     results = {"x_coarse": x_coarse,
                "y_coarse": y_coarse,
                "y_slopes": slopes,

@@ -35,13 +35,20 @@ for sim_name in results:
         if utils.all_match(curr_params, results[sim_name]["params"]):
             sims_to_plot.append(sim_name)
 
-def get_spline_derivs(x, y):
+def get_spline_fit(x, y):
     """
-    Get spline fitting-based derivatives.
+    Get spline fit.
     """
     spl = scipy.interpolate.UnivariateSpline(x, y, k=4, s=1)
-    deriv = spl.derivative()
-    return deriv(x)
+    return spl(x)
+
+def get_spline_derivs_fit(x, y):
+    """
+    Get spline derivatives fit.
+    """
+    spl = scipy.interpolate.UnivariateSpline(x, y, k=4, s=1)
+    derivs = spl.derivative()
+    return derivs(x)
 
 sim_to_plot = sims_to_plot[0]            
 df = results[sim_to_plot]["data"]
@@ -50,9 +57,29 @@ popsizes = fitness.str_popsizes_to_array(df["log_pop_sizes"])
 # nutrient state
 df["log2_pop_size"] = np.log2(np.exp(popsizes).sum(axis=1))
 print df
-g = df.groupby(["sim_num", "policy"])
-x = df[df["policy"] == "Posterior predictive"]
-x = x[x["sim_num"] == 1]
+g = df.groupby(["policy", "sim_num"])
+new_df = []
+for name, group in g:
+    curr_df = group.copy()
+    print "fitting to: ", curr_df["t"], curr_df["growth_rates"]
+    curr_df["fitted_growth_rate"] = \
+      get_spline_fit(curr_df["t"], curr_df["growth_rates"])
+    curr_df["fitted_growth_rate_from_pop"] = \
+      get_spline_derivs_fit(curr_df["t"], curr_df["log2_pop_size"])
+    plt.figure()
+    plt.plot(curr_df["t"], curr_df["growth_rates"])
+    plt.plot(curr_df["t"], curr_df["fitted_growth_rate"], color="r")
+    plt.plot(curr_df["t"], curr_df["fitted_growth_rate_from_pop"], color="b")
+    plt.savefig("test.pdf")
+    print curr_df
+    raise Exception
+    new_df.append(curr_df)
+
+new_df = pandas.concat(new_df)
+print new_df.head()
+
+
+raise Exception, "test"
 print " --- \n"
 print "x: ", x
 print x["log2_pop_size"]
