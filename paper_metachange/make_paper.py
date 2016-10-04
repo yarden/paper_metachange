@@ -915,7 +915,7 @@ def make_figure5(input_fname, plot_fname, label):
       "Expected 4 simulations to plot."
     gs = gridspec.GridSpec(num_plots / 2, num_plots)
     sim_top = 0.48
-    gs.update(right=1.75, left=0.15,
+    gs.update(right=1.75, left=0.18,
               top=sim_top,
               bottom=0.0755,
               hspace=0.45, wspace=0.4)
@@ -963,7 +963,7 @@ def make_figure5(input_fname, plot_fname, label):
                  xycoords="figure fraction",
                  fontsize=10)
     plt.annotate(r"Growth rate",
-                 xy=(0.01, sim_top - 0.125),
+                 xy=(0.01, sim_top - 0.225),
                  xycoords="figure fraction",
                  rotation=90,
                  fontsize=10)
@@ -1639,7 +1639,7 @@ def make_supp_figure3(input_fname, plot_fname, label):
       "Expected 4 simulations to plot."
     gs = gridspec.GridSpec(num_plots / 2, num_plots)
     sim_top = 0.70
-    gs.update(right=1.75, left=0.15, top=sim_top, hspace=0.45,
+    gs.update(right=1.75, left=0.18, top=sim_top, hspace=0.45,
               wspace=0.4)
     axes = []
     for n, sim_to_plot in enumerate(sims_to_plot):
@@ -1692,7 +1692,7 @@ def make_supp_figure3(input_fname, plot_fname, label):
                  xycoords="figure fraction",
                  fontsize=10)
     plt.annotate(r"Growth rate",
-                 xy=(0.01, 0.74 * sim_top),
+                 xy=(0.01, 0.64 * sim_top),
                  xycoords="figure fraction",
                  rotation=90,
                  fontsize=10)

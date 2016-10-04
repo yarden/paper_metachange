@@ -7,8 +7,8 @@
  "true_gluc_to_gluc": 0.8,
  "true_galac_to_gluc": 0.2,
  # gluc and galac growth rates
- "gluc_growth_rate": 0.3,
- "galac_growth_rate": 0.04,
+ "gluc_growth_rate": 0.7,
+ "galac_growth_rate": 0.175,
  # growth rate when environment mismatches cell state
  "mismatch_growth_rate": 0.00,
  # time start for simulation

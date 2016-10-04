@@ -277,8 +277,8 @@ def bh_glu_only_growth_policy(time_obj, env_obj,
     switch between glucose and galactose nutrient states
     but grow faster on glucose.
     """
-    glu_growth_rate = 0.3
-    gal_growth_rate = glu_growth_rate / 7.
+    glu_growth_rate = 0.7
+    gal_growth_rate = glu_growth_rate / 4.
     # numeric value associated with glucose/galactose
     glu_val = 0
     gal_val = 1

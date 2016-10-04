@@ -390,6 +390,9 @@ def run_switch_ssm_fitness_simulations(input_fnames, output_fname,
     fitness_params_fname = input_fnames[0]
     ssm_params_fname = input_fnames[1]
     params = simulation.load_params(fitness_params_fname)
+    print "FITNESS PARAMETERS: "
+    print params
+    raise Exception, "switch"
     model_params = simulation.load_params(ssm_params_fname)
     params.update(model_params)
     all_policies = OrderedDict()
