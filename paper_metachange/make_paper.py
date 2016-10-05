@@ -407,10 +407,8 @@ def plot_figure2_panel_A(main_ax, gs,
 def plot_figure2_panel_B(main_ax, gs,
                          panel_label_x=0.01):
     params = simulation.load_params(pipeline_sudden.MARKOV_PARAM_FNAME)
-    #params["gluc_growth_rate"] = 0.3
-    #galac_growth_rates = [0.075, 0.15, 0.28]
-    params["gluc_growth_rate"] = 0.7
-    galac_growth_rates = [0.175, 0.35, 0.68]
+    params["gluc_growth_rate"] = 0.3
+    galac_growth_rates = [0.075, 0.15, 0.28]
     # 4-fold lower growth rate, 2-fold, nearly equal growth rates
     num_plots = len(galac_growth_rates)
     sns.set_style("white")
