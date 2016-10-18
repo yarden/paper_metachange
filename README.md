@@ -9,7 +9,7 @@ Yarden Katz and Michael Springer,
 Installing the code
 -----------------
 
-The code can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``). Unit tests can be run using: 
+This code requires installing the [ParticleFever library](https://github.com/yarden/particlefever). Once this library is installed, the code for the paper can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``).  Unit tests can be run using: 
 
     cd ./paper_metachange
     python testing.py
