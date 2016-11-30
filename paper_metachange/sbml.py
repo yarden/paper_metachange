@@ -125,7 +125,9 @@ class SBML:
         ### TODO: REFACTOR THIS PART TO get_initial_values()
         dose_data = dose_sched.dose_data
         model = set_model_vars(model, dose_data[0])
+        print model.keys, " << < "
         duration = times[1] - times[0]
+        print "duration: ", duration
         assert (duration > 0), "Time step size must be positive."
         result = model.simulate(start=times[0], end=times[-1],
                                 duration=duration,
@@ -154,7 +156,6 @@ class SBML:
             t_ind += 1
         return pandas.DataFrame(all_results)
             
-
 def main():
     f = "./sbml_models/glu_gal_transition_counter.xml"
     sbml_model = SBML(f)

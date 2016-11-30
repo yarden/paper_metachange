@@ -17,6 +17,7 @@ MAIN_DIR = os.path.abspath(MAIN_DIR)
 print "main code directory: %s" %(MAIN_DIR)
 
 PIPELINES_INFO = os.path.join(MAIN_DIR, "pipelines_info")
+utils.make_dir(PIPELINES_INFO)
 
 PIPELINE_START_FNAME = os.path.join(PIPELINES_INFO, "paper_pipeline.start")
 
