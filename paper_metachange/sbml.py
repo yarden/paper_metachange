@@ -148,7 +148,6 @@ class SBML:
             for var_name in dose_data[next_t_ind]:
                 # use concentration notation 
                 results_dict["[%s]" %(var_name)] = dose_data[next_t_ind][var_name]
-                #results_dict["[%s]" %(var_name)] = dose_data[next_t_ind][var_name]
             all_results.append(results_dict)
             # advance time value
             prev_t = next_t

@@ -1395,8 +1395,8 @@ def make_figure6(input_fname, plot_fname, label):
     print "loading SBML model from %s" %(SBML_MODEL_FNAME)
     sbml_model = sbml.SBML(SBML_MODEL_FNAME)
     t_start = 0
-#    t_end = 250
-    t_end = 150
+    t_end = 250
+#    t_end = 150
     num_time_bins = 500
     times = np.linspace(t_start, t_end, num_time_bins)
     doser = sbml.DoseSched(t_start, t_end, num_time_bins)
