@@ -373,11 +373,27 @@ def plot_figure2_panel_A(main_ax, gs,
        "Gal": plot_utils.blue}
     sns.set_style("ticks")
     num_xticks = 6
+    # x-offset for panel label
+    x_panel_offset = 0.33
     for n in range(num_plots):
         ax = plt.subplot(gs[positions[n][0], positions[n][1]])
         if n == 0:
             ax.annotate("A", xy=(panel_label_x, 0.96),
                         xytext=(panel_label_x, 0.96),
+                        xycoords="figure fraction",
+                        textcoords="figure fraction",
+                        fontsize=PANEL_LABEL_FONTSIZE,
+                        fontweight="bold")
+        elif n == 1:
+            ax.annotate("B", xy=(panel_label_x + x_panel_offset, 0.96),
+                        xytext=(panel_label_x + x_panel_offset, 0.96),
+                        xycoords="figure fraction",
+                        textcoords="figure fraction",
+                        fontsize=PANEL_LABEL_FONTSIZE,
+                        fontweight="bold")
+        elif n == 2:
+            ax.annotate("C", xy=(panel_label_x + 2*x_panel_offset, 0.96),
+                        xytext=(panel_label_x + 2*x_panel_offset, 0.96),
                         xycoords="figure fraction",
                         textcoords="figure fraction",
                         fontsize=PANEL_LABEL_FONTSIZE,
@@ -412,6 +428,8 @@ def plot_figure2_panel_B(main_ax, gs,
     # 4-fold lower growth rate, 2-fold, nearly equal growth rates
     num_plots = len(galac_growth_rates)
     sns.set_style("white")
+    x_panel_offset = 0.32
+    y_panel = 0.52
     for plot_num, galac_growth_rate in enumerate(galac_growth_rates):
         show_x_label = False
         show_y_label = False
@@ -419,8 +437,22 @@ def plot_figure2_panel_B(main_ax, gs,
         params["galac_growth_rate"] = galac_growth_rate
         ax = plt.subplot(gs[0, plot_num])
         if plot_num == 0:
-            ax.annotate("B", xy=(panel_label_x, 0.51),
-                        xytext=(panel_label_x, 0.51),
+            ax.annotate("D", xy=(panel_label_x, y_panel),
+                        xytext=(panel_label_x, y_panel),
+                        xycoords="figure fraction",
+                        textcoords="figure fraction",
+                        fontsize=PANEL_LABEL_FONTSIZE,
+                        fontweight="bold")
+        if plot_num == 1:
+            ax.annotate("E", xy=(panel_label_x + x_panel_offset, y_panel),
+                        xytext=(panel_label_x + x_panel_offset, y_panel),
+                        xycoords="figure fraction",
+                        textcoords="figure fraction",
+                        fontsize=PANEL_LABEL_FONTSIZE,
+                        fontweight="bold")
+        if plot_num == 2:
+            ax.annotate("F", xy=(panel_label_x + 2*x_panel_offset - 0.015, y_panel),
+                        xytext=(panel_label_x + 2*x_panel_offset - 0.015, y_panel),
                         xycoords="figure fraction",
                         textcoords="figure fraction",
                         fontsize=PANEL_LABEL_FONTSIZE,
@@ -965,15 +997,26 @@ def make_figure5(input_fname, plot_fname, label):
                  xycoords="figure fraction",
                  rotation=90,
                  fontsize=10)
-    # panel A label
+    # panel A & B labels
     plt.annotate("A",
                  xy=(0.01, multi_schematic_top - 0.01),
                  xycoords="figure fraction",
                  fontweight="bold",
                  fontsize=PANEL_LABEL_FONTSIZE)
-    # panel B label
     plt.annotate("B",
+                 xy=(0.3, multi_schematic_top - 0.01),
+                 xycoords="figure fraction",
+                 fontweight="bold",
+                 fontsize=PANEL_LABEL_FONTSIZE)
+    # panel C label
+    plt.annotate("C",
                  xy=(0.01, sim_top + 0.15),
+                 xycoords="figure fraction",
+                 fontweight="bold",
+                 fontsize=PANEL_LABEL_FONTSIZE)
+    # panel D label
+    plt.annotate("D",
+                 xy=(0.01, sim_top + 0.02),
                  xycoords="figure fraction",
                  fontweight="bold",
                  fontsize=PANEL_LABEL_FONTSIZE)
@@ -1430,6 +1473,11 @@ def make_figure6(input_fname, plot_fname, label):
     plt.ylim([-0.5, 14])
     plt.yticks(range(0, 14 + 2, 4))
     plt.ylabel("Sensors", fontsize=8)
+    plt.annotate("C",
+                 xy=(panel_label_x, 0.37),
+                 xycoords="figure fraction",
+                 fontweight="bold",
+                 fontsize=PANEL_LABEL_FONTSIZE)
     ax2.legend(fontsize=8, handlelength=2.2, handletextpad=handletextpad,
                numpoints=4,
                labelspacing=labelspacing,
@@ -1473,6 +1521,11 @@ def make_figure6(input_fname, plot_fname, label):
     sns.despine(trim=True, offset=offset)
     plt.xlabel("Time", fontsize=10)
     plt.ylabel("Transition counters", fontsize=8)
+    plt.annotate("D",
+                 xy=(panel_label_x, 0.21),
+                 xycoords="figure fraction",
+                 fontweight="bold",
+                 fontsize=PANEL_LABEL_FONTSIZE)
     plt.savefig(plot_fname)
 
 
