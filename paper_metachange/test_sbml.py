@@ -87,7 +87,7 @@ def test_model():
     doser.add_dose("Glu", 0, 49, nutrient_val)
     doser.add_dose("Glu", 49, 99, 0)
     # Gal
-    doser.add_dose("Gal", 51, 99, nutrient_val)
+    doser.add_dose("Gal", 49, 99, nutrient_val)
     doser.add_dose("Gal", 99, 149, 0)
     # Glu
 #    doser.add_dose("Glu", 99, 149, nutrient_val)
@@ -200,8 +200,12 @@ def test_model():
              linewidth=lw,
              clip_on=clip_on,
              color="k")
-    sns.despine(trim=True, offset=offset)
     ax4.legend(fontsize=8, handlelength=2.2)
+    plt.xlim([x_start, x_end])
+    plt.xticks(range(x_start, x_end + x_step, x_step),
+               fontsize=8)
+    sns.despine(trim=True, offset=offset)
+    plt.xlabel("Time", fontsize=8)
     plt.savefig(plot_fname)
 
 

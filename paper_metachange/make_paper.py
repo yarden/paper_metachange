@@ -1362,14 +1362,14 @@ def make_figure6(input_fname, plot_fname, label):
     doser.add_dose("Glu", 0, 49, nutrient_val)
     doser.add_dose("Glu", 49, 99, 0)
     # Gal
-#    doser.add_dose("Gal", 49, 99, nutrient_val)
-#    doser.add_dose("Gal", 99, 149, 0)
+    doser.add_dose("Gal", 49, 99, nutrient_val)
+    doser.add_dose("Gal", 99, 149, 0)
     # Glu
-#    doser.add_dose("Glu", 99, 149, nutrient_val)
-#    doser.add_dose("Glu", 149, 249, 0)
+    doser.add_dose("Glu", 99, 149, nutrient_val)
+    doser.add_dose("Glu", 149, 249, 0)
     # Gal
-#    doser.add_dose("Gal", 149, 199, nutrient_val)
-#    doser.add_dose("Glu", 199, 200, 0)
+    doser.add_dose("Gal", 149, 199, nutrient_val)
+    doser.add_dose("Glu", 199, 200, 0)
     results = sbml_model.simulate_with_doses(times, doser)
     sns.set_style("ticks")
     plt.tick_params(axis='both', which='major', labelsize=8,

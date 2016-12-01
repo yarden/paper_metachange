@@ -9,10 +9,16 @@ Yarden Katz and Michael Springer,
 Installing the code
 -----------------
 
-This code requires installing the [ParticleFever library](https://github.com/yarden/particlefever). Once this library is installed, the code for the paper can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``).  Unit tests can be run using: 
+This code depends on the following external libraries:
+
+* [ParticleFever library](https://github.com/yarden/particlefever)
+* [libRoadRunner](http://libroadrunner.org/) (with Python wrapper). This library can be simply installed by downloading [pylibroadrunner](https://sourceforge.net/projects/libroadrunner/files/libroadrunner-1.3/) for your platform and installing it like an ordinary Python package.
+
+Once these libraries are installed, the code for the paper can be installed as a regular Python package using ``pip install .`` in the repository directory (or ``python setup.py install``).  Unit tests can be run using: 
 
     cd ./paper_metachange
     python testing.py
+
 
 Organization
 -----------------
@@ -34,3 +40,5 @@ Figures are generated using a [ruffus](http://www.ruffus.org.uk/) pipeline by ru
     python make_paper.py
 
 Particle filtering inference for Bayesian models is done using the [ParticleFever library](https://github.com/yarden/particlefever).
+
+
