@@ -344,7 +344,8 @@ def plot_decision_mat(params,
                       discretize=False,
                       show_x_label=False,
                       show_y_label=False,
-                      show_colorbar_label=False):
+                      show_colorbar_label=False,
+                      title_prefix=""):
     from matplotlib.colors import LogNorm, BoundaryNorm, SymLogNorm
     probs = np.linspace(0.001, 1, 101)
     import matplotlib.colors as mcolors
@@ -391,8 +392,9 @@ def plot_decision_mat(params,
         plt.xlabel(r"$\theta_{\mathsf{Gal}\rightarrow\mathsf{Glu}}$")
     if show_y_label:
         plt.ylabel(r"$\theta_{\mathsf{Glu}\rightarrow\mathsf{Glu}}$")
-    plt.title(r"$\mu_\mathsf{Glu} = %.2f, \mu_\mathsf{Gal} = %.2f$" \
-              %(params["gluc_growth_rate"],
+    plt.title(r"%s$\mu_\mathsf{Glu} = %.2f, \mu_\mathsf{Gal} = %.2f$" \
+              %(title_prefix,
+                params["gluc_growth_rate"],
                 params["galac_growth_rate"]),
               fontsize=8)
     # plt.title(r"$\mu_\mathsf{Glu} = %.2f, \mu_\mathsf{Gal} = %.2f, " \

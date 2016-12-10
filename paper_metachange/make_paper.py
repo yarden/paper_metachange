@@ -375,25 +375,12 @@ def plot_figure2_panel_A(main_ax, gs,
     num_xticks = 6
     # x-offset for panel label
     x_panel_offset = 0.33
+    title_prefix = ["(i)", "(ii)", "(iii)", "(iv)", "(v)", "(vi)"]
     for n in range(num_plots):
         ax = plt.subplot(gs[positions[n][0], positions[n][1]])
         if n == 0:
             ax.annotate("A", xy=(panel_label_x, 0.96),
                         xytext=(panel_label_x, 0.96),
-                        xycoords="figure fraction",
-                        textcoords="figure fraction",
-                        fontsize=PANEL_LABEL_FONTSIZE,
-                        fontweight="bold")
-        elif n == 1:
-            ax.annotate("B", xy=(panel_label_x + x_panel_offset, 0.96),
-                        xytext=(panel_label_x + x_panel_offset, 0.96),
-                        xycoords="figure fraction",
-                        textcoords="figure fraction",
-                        fontsize=PANEL_LABEL_FONTSIZE,
-                        fontweight="bold")
-        elif n == 2:
-            ax.annotate("C", xy=(panel_label_x + 2*x_panel_offset, 0.96),
-                        xytext=(panel_label_x + 2*x_panel_offset, 0.96),
                         xycoords="figure fraction",
                         textcoords="figure fraction",
                         fontsize=PANEL_LABEL_FONTSIZE,
@@ -414,9 +401,10 @@ def plot_figure2_panel_A(main_ax, gs,
         ax.spines["left"].set_visible(False)
         if n == 4:
             plt.xlabel("Time step", fontsize=labels_fontsize)
-        plt.title(r"$\theta_{\mathsf{Glu}\rightarrow\mathsf{Glu}} = %.2f$, " \
+        plt.title(r"$\bf{%s}$ $\theta_{\mathsf{Glu}\rightarrow\mathsf{Glu}} = %.2f$, " \
                   r"$\theta_{\mathsf{Gal}\rightarrow\mathsf{Glu}} = %.2f$" \
-                  %(p_gluc_to_gluc,
+                  %(title_prefix[n],
+                    p_gluc_to_gluc,
                     p_galac_to_gluc),
                   fontsize=8)
         
@@ -430,6 +418,7 @@ def plot_figure2_panel_B(main_ax, gs,
     sns.set_style("white")
     x_panel_offset = 0.32
     y_panel = 0.52
+    title_prefix = ["(i)", "(ii)", "(iii)"]
     for plot_num, galac_growth_rate in enumerate(galac_growth_rates):
         show_x_label = False
         show_y_label = False
@@ -437,22 +426,8 @@ def plot_figure2_panel_B(main_ax, gs,
         params["galac_growth_rate"] = galac_growth_rate
         ax = plt.subplot(gs[0, plot_num])
         if plot_num == 0:
-            ax.annotate("D", xy=(panel_label_x, y_panel),
+            ax.annotate("B", xy=(panel_label_x, y_panel),
                         xytext=(panel_label_x, y_panel),
-                        xycoords="figure fraction",
-                        textcoords="figure fraction",
-                        fontsize=PANEL_LABEL_FONTSIZE,
-                        fontweight="bold")
-        if plot_num == 1:
-            ax.annotate("E", xy=(panel_label_x + x_panel_offset, y_panel),
-                        xytext=(panel_label_x + x_panel_offset, y_panel),
-                        xycoords="figure fraction",
-                        textcoords="figure fraction",
-                        fontsize=PANEL_LABEL_FONTSIZE,
-                        fontweight="bold")
-        if plot_num == 2:
-            ax.annotate("F", xy=(panel_label_x + 2*x_panel_offset - 0.015, y_panel),
-                        xytext=(panel_label_x + 2*x_panel_offset - 0.015, y_panel),
                         xycoords="figure fraction",
                         textcoords="figure fraction",
                         fontsize=PANEL_LABEL_FONTSIZE,
@@ -470,7 +445,9 @@ def plot_figure2_panel_B(main_ax, gs,
         model_sudden_markov.plot_decision_mat(params,
                                               show_x_label=show_x_label,
                                               show_y_label=show_y_label,
-                                              show_colorbar_label=show_colorbar_label)
+                                              show_colorbar_label=show_colorbar_label,
+                                              title_prefix=r"$\bf{%s}$ " \
+                                              %(title_prefix[plot_num]))
         plt.tick_params(axis='both', which='major', labelsize=8,
                         pad=1)
 
