@@ -426,6 +426,7 @@ def plot_figure2_panel_B(main_ax, gs,
         params["galac_growth_rate"] = galac_growth_rate
         ax = plt.subplot(gs[0, plot_num])
         if plot_num == 0:
+            # panel B
             ax.annotate("B", xy=(panel_label_x, y_panel),
                         xytext=(panel_label_x, y_panel),
                         xycoords="figure fraction",
